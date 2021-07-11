@@ -96,4 +96,17 @@ class CargosController extends Controller
 
         return redirect('cargos');
     }
+
+    public function relatorio(Request $request) {
+        $cargos = Cargos::all();
+        $selectedCargo = Cargos::find($request->id);
+
+        if (isset($selectedCargo->funcionarios_cargos)) {
+            $funcionarios_cargos = $selectedCargo->funcionarios_cargos;
+        } else {
+            $funcionarios_cargos = null;
+        }
+
+        return view('relatorios/funcionarios', compact('cargos', 'funcionarios_cargos'));
+    }
 }

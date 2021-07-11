@@ -17,3 +17,4 @@ use App\Http\Controllers\FuncionariosController;
 
 Route::resource('cargos', CargosController::class);
 Route::resource('funcionarios', FuncionariosController::class);
+Route::get('/relatorios/funcionarios', 'App\Http\Controllers\CargosController@relatorio');
