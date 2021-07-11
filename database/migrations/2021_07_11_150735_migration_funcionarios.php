@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MigrationCargos extends Migration
+class MigrationFuncionarios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class MigrationCargos extends Migration
      */
     public function up()
     {
-        Schema::create('cargos', function (Blueprint $table) {
+        Schema::create('funcionarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->text('descricao');
+            $table->string('cpf');
+            $table->string('email');
+            $table->string('salario_base');
+            $table->integer('ano_admissao');
+            $table->unsignedInteger('cargos_id');
+            $table->foreign('cargos_id')->references('id')->on('cargos');
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ class MigrationCargos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargos');
+        Schema::dropIfExists('disciplinas');
     }
 }
